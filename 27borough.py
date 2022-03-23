@@ -4,9 +4,10 @@
 #This program is
 
 import matplotlib.pyplot as plt
-
 import pandas as pd
-pop = pd.read_csv('nycHistPop.csv',skiprows=5)
-pop.plot(x="Year")
 
-plt.show()
+pop = pd.read_csv('nycHistPop.csv',skiprows=5)
+pop['Fraction'] = pop[input("Enter borough")]/pop['Total']
+pop.plot(x = 'Year', y = 'Fraction')
+fig = plt.gcf()
+fig.savefig(input("Enter a name for pic"))
